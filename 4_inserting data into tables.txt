@@ -1,0 +1,89 @@
+=============================================
+111111111111111111111111111111111111111111111111
+=============================================
+INSERT INTO U_DETAIL (U_ID, U_PASS, U_NAME, U_NUMBER, U_MAIL, U_ROLE, U_INFO, U_SHIFT) VALUES (U_ID1.NEXTVAL, '123', 'sharmin', '01234567890', 'sharmin@gmail.com', 'admin', 'hr', 'su-fr-9am-5pm');
+
+INSERT INTO U_DETAIL (U_ID, U_PASS, U_NAME, U_NUMBER, U_MAIL, U_ROLE, U_INFO, U_SHIFT) VALUES (U_ID1.NEXTVAL, '456', 'fahim', '09876543210', 'ekhtearf@gmail.com', 'doctor', 'sergon', 'mo-we-12pm-5pm');
+
+INSERT INTO U_DETAIL (U_ID, U_PASS, U_NAME, U_NUMBER, U_MAIL, U_ROLE, U_INFO, U_SHIFT) VALUES (U_ID1.NEXTVAL, '789', 'aklima', '09878654375', 'aklima@gmail.com', 'doctor', 'medicine', 'th-sa-9am-2pm');
+
+INSERT INTO U_DETAIL (U_ID, U_PASS, U_NAME, U_NUMBER, U_MAIL, U_ROLE, U_SHIFT) VALUES (U_ID1.NEXTVAL, '234', 'rohim', '74646578694', 'rohim@gmail.com', 'accountant', 'su-fr-9am-5pm');
+
+INSERT INTO U_DETAIL (U_ID, U_PASS, U_NAME, U_NUMBER, U_MAIL, U_ROLE, U_SHIFT) VALUES (U_ID1.NEXTVAL, '345', 'korima', '73658746578', 'korima@gmail.com', 'nurse', 'su-fr-9am-5pm');
+
+INSERT INTO U_DETAIL (U_ID, U_PASS, U_NAME, U_NUMBER, U_MAIL, U_ROLE, U_INFO) VALUES (U_ID1.NEXTVAL, '321', 'rofiq', '67584756456', 'rofiq@gmail.com', 'patient', 'emergency');
+
+INSERT INTO U_DETAIL (U_ID, U_PASS, U_NAME, U_NUMBER, U_MAIL, U_ROLE, U_INFO) VALUES (U_ID1.NEXTVAL, '654', 'shofiq', '65375867465', 'shofiq@gmail.com', 'patient', 'mild');
+
+INSERT INTO U_DETAIL (U_ID, U_PASS, U_NAME, U_NUMBER, U_MAIL, U_ROLE, U_INFO) VALUES (U_ID1.NEXTVAL, '987', 'raihan', '98765374658', 'raihan@gmail.com', 'patient', 'moderate');
+
+INSERT INTO U_DETAIL (U_ID, U_PASS, U_NAME, U_NUMBER, U_MAIL, U_ROLE, U_INFO) VALUES (U_ID1.NEXTVAL, '876', 'hamid', '36485736475', 'hamid@gmail.com', 'patient', 'emergency');
+
+INSERT INTO U_DETAIL (U_ID, U_PASS, U_NAME, U_NUMBER, U_MAIL, U_ROLE, U_INFO) VALUES (U_ID1.NEXTVAL, '567', 'kobir', '45896325418', 'kobir@gmail.com', 'patient', 'emergency');
+============================================
+22222222222222222222222222222222222222222222222
+============================================
+INSERT INTO AMBULANCE(CONTACT, STATUS) VALUES ('47685968475', 'active');
+
+INSERT INTO AMBULANCE (CONTACT, STATUS) VALUES ('76548576894', 'inactive');
+
+INSERT INTO AMBULANCE (CONTACT, STATUS) VALUES ('37495847364', 'active');
+
+INSERT INTO AMBULANCE (CONTACT, STATUS) VALUES ('38457596049', 'active');
+
+INSERT INTO AMBULANCE (CONTACT, STATUS) VALUES ('58695848573', 'inactive');
+==========================================
+333333333333333333333333333333333333333333333
+==========================================
+INSERT INTO PRESCRIPTION (P_ID, U_ID, P_INFO) VALUES (P_ID1.NEXTVAL, '2', 'rofiq-needs-meds');
+
+INSERT INTO PRESCRIPTION (P_ID, U_ID, P_INFO) VALUES (P_ID1.NEXTVAL, '2', 'hamid-needs-rest');
+
+INSERT INTO PRESCRIPTION (P_ID, U_ID, P_INFO) VALUES (P_ID1.NEXTVAL, '3', 'raihan-needs-meds');
+
+INSERT INTO PRESCRIPTION (P_ID, U_ID, P_INFO) VALUES (P_ID1.NEXTVAL, '3', 'kobir-needs-rest');
+
+INSERT INTO PRESCRIPTION (P_ID, U_ID, P_INFO) VALUES (P_ID1.NEXTVAL, '2', 'shofiq-needs-rest');
+
+INSERT INTO PRESCRIPTION (P_ID, U_ID, P_INFO) VALUES (P_ID1.NEXTVAL, '2', 'rofiq-needs-rest');
+
+INSERT INTO PRESCRIPTION (P_ID, U_ID, P_INFO) VALUES (P_ID1.NEXTVAL, '2', 'hamid-needs-meds');
+
+INSERT INTO PRESCRIPTION (P_ID, U_ID, P_INFO) VALUES (P_ID1.NEXTVAL, '3', 'raihan-needs-rest');
+
+INSERT INTO PRESCRIPTION (P_ID, U_ID, P_INFO) VALUES (P_ID1.NEXTVAL, '3', 'kobir needs-meds');
+
+INSERT INTO PRESCRIPTION (P_ID, U_ID, P_INFO) VALUES (P_ID1.NEXTVAL, '3', 'shofiq-needs-meds');
+============================================
+44444444444444444444444444444444444444444444444
+============================================
+INSERT INTO MEDICINE (M_ID, M_NAME, M_PRICE, M_STATUS) VALUES (M_ID1.NEXTVAL, 'Napa Extra', '2', 'available');
+
+INSERT INTO MEDICINE (M_ID, M_NAME, M_PRICE, M_STATUS) VALUES(M_ID1.NEXTVAL, 'Napa Extend', '2', 'available');
+
+INSERT INTO MEDICINE (M_ID, M_NAME, M_PRICE, M_STATUS) VALUES (M_ID1.NEXTVAL, 'Seclo', '5', 'available');
+
+INSERT INTO MEDICINE (M_ID, M_NAME, M_PRICE, M_STATUS) VALUES (M_ID1.NEXTVAL, 'Phizer', '20000', 'available');
+
+INSERT INTO MEDICINE(M_ID, M_NAME, M_PRICE, M_STATUS) VALUES (M_ID1.NEXTVAL, 'Moderna', '19000', 'available');
+
+INSERT INTO MEDICINE (M_ID, M_NAME, M_PRICE, M_STATUS) VALUES (M_ID1.NEXTVAL, 'Astrazeneca', '22000', 'available');
+
+INSERT INTO MEDICINE (M_ID, M_NAME, M_PRICE, M_STATUS) VALUES (M_ID1.NEXTVAL, 'Vicadine', '200', 'unavailable');
+
+INSERT INTO MEDICINE (M_ID, M_NAME, M_PRICE, M_STATUS) VALUES (M_ID1.NEXTVAL, 'Xennex', '200', 'unavailable');
+
+INSERT INTO MEDICINE (M_ID, M_NAME, M_PRICE, M_STATUS) VALUES (M_ID1.NEXTVAL, 'Tushka', '70', 'unavailable');
+
+INSERT INTO MEDICINE (M_ID, M_NAME, M_PRICE, M_STATUS) VALUES (M_ID1.NEXTVAL, 'Paracitamol', '2', 'unavailable');
+
+INSERT INTO MEDICINE (M_ID, M_NAME, M_PRICE, M_STATUS) VALUES (M_ID1.NEXTVAL, 'Histacine', '2', 'unavailable');
+
+INSERT INTO MEDICINE (M_ID, M_NAME, M_PRICE, M_STATUS) VALUES (M_ID1.NEXTVAL, 'Exium', '24', 'unavailable');
+===========================================5555555555555555555555555555555555555555555555
+===========================================
+INSERT INTO CONTACT (C_NAME, C_NUMBER, C_MAIL, C_MASSAGE) VALUES ('raihan', '98765374658', 'raihan@gmail.com', 'I need to see a doctor');
+
+INSERT INTO CONTACT (C_NAME, C_NUMBER, C_MAIL, C_MASSAGE) VALUES ('rofiq', '67584756456', 'rofiq@gmail.com', 'I am very sick, can someone send an ambulance?');
+
+INSERT INTO CONTACT (C_NAME, C_NUMBER, C_MAIL, C_MASSAGE) VALUES ('shofiq', '65375867465', 'shofiq@gmail.com', 'Is there any doctors who specializes in surgery?')
