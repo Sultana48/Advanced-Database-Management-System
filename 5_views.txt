@@ -1,0 +1,58 @@
+Read First: First Run the CRATE VIEW Queries on the workspace....then Run the select * queries that are located above each view.
+...................
+1............................................................................
+
+see the list of all the active and inactive ambulances
+...................
+select * from AMB_ACT
+....................
+CREATE VIEW AMB_ACT
+AS SELECT
+    STATUS,LISTAGG(CONTACT,', ') WITHIN GROUP (ORDER BY CONTACT) AS "PHONE NUMBERS"
+FROM 
+    AMBULANCE
+GROUP BY 
+    STATUS;
+...................
+2................................................................
+See the details of all the doctors and nurses
+....................
+Select * from doc_nur_det
+....................................
+CREATE VIEW DOC_NUR_DET
+AS SELECT   u_detail.u_name,u_detail.u_role,u_detail.u_info,u_detail.u_number,u_detail.u_shift,u_detail.u_mail
+FROM
+    u_detail
+WHERE 
+    u_detail.u_role in ('Doctor','nurse')
+GROUP BY
+    u_detail.u_name,u_detail.u_role,u_detail.u_info,u_detail.u_number,u_detail.u_shift,u_detail.u_mail;
+...................
+3......................................................................................
+See the details of all the prescriptions and doctors that prescribed them
+.......................
+select * from doc_pr_det
+...................
+CREATE VIEW DOC_PR_DET
+AS SELECT 
+    PRESCRIPTION.P_ID,
+    U_DETAIL.U_NAME,
+    U_DETAIL.U_INFO,
+    PRESCRIPTION.P_INFO,
+    U_DETAIL.U_SHIFT 
+FROM 
+    U_DETAIL,PRESCRIPTION 
+WHERE 
+    U_DETAIL.U_ID=PRESCRIPTION.U_ID;
+.....................................................................................
+4......................................................................................
+See all the details of people who contacted you if their number exists on U_DETAIL table
+.......................
+select * from con_det
+...................
+CREATE VIEW CON_DET
+AS SELECT * FROM 
+    U_DETAIL,CONTACT 
+WHERE 
+    U_DETAIL.U_NUMBER=CONTACT.C_NUMBER ;
+
