@@ -1,0 +1,170 @@
+CREATE DATABASE Final;
+
+(I have changed all the datatypes named VERCHAR to VARCHAR2)
+
+SELECT * FROM LOGIN_TBL;  (Has primary Key UserId)
+SELECT * FROM Doctor_REGISTRATION; (Removed the column named picture)
+SELECT * FROM DOCTOR_DETAILS;
+SELECT * FROM Appointment;
+SELECT * FROM PAY_DETAILS; (Has primary key ACCOUNTID)
+SELECT * FROM ACCOUNTANT_DETAILS;
+SELECT * FROM USER_DETAIL;
+SELECT * FROM Patient_Registration;
+SELECT * FROM Patient_Details;
+SELECT * FROM CONTACT;
+SELECT * FROM doctor_RecordDetails;
+SELECT * FROM HR_DETAILS;
+SELECT * FROM HR_REGISTRATION; (Removed the column named picture)
+SELECT * FROM PHARMACY; (Change column name of DATE to DATES)
+SELECT * FROM AMBULANCE;
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Sample Queries(Don't Run these now, you can use these for using on the appliation backend):
+1.    SELECT * FROM DOCTOR_DETAILS;
+* to show details about all the doctors
+2.    SELECT * FROM Patient_Details;
+*to show details of all the patients
+3.    SELECT * FROM HR_DETAILS;
+*to show details of all HR.
+4.   SELECT * FROM AMBULANCE;
+*to show all the ambulances numbers. 
+5.   DELETE FROM Patient_Details WHERE ID='23424';
+*to delete a specific patient with their ID.
+6.   SELECT NAME, DAY, TIME from DOCTOR_DETAILS;
+*to show only the doctor's name and their days and times from doctor_details table.
+7.   UPDATE Patient_Details set CONTACT='46567897' WHERE ID='23424';
+*to edit a patients contact number.
+8.   SELECT * FROM PHARMACY WHERE MEDICINE= 'Napa';
+*Find a medicine from pharmacy with the medicine name.
+9.   INSERT INTO CONTACT VALUES ('','','','');
+*Contact us by inserting associating values inside (''). 
+10.  ALTER TABLE AMBULANCE RENAME COLUMN HOTLINE to Phone_Number;   
+*run this query to rename a specific column of a specific table.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+**MUST READ
+*Check the autocommit option on the sql workspace before running any sql operation from below.
+*Click Run and Save all these sql operations one by one on oracle database to create database.
+*You don't have to run the sql statements with empty values as you are going to take input from users.
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE LOGIN_TBL(UserId VARCHAR2(60) CONSTRAINT PK_UserId PRIMARY KEY,USERNAME VARCHAR2(50),PASS VARCHAR2(60));
+
+
+INSERT INTO LOGIN_TBL VALUES ('15-3O492-3','Fahim','123');
+INSERT INTO LOGIN_TBL VALUES ('18-64678-2','Sharmin','456');
+INSERT INTO LOGIN_TBL VALUES ('18-23467-3','Aklima','789');
+INSERT INTO LOGIN_TBL VALUES ('18-37151-1','masum','321');
+INSERT INTO LOGIN_TBL VALUES ('18-47532-1','samir','235');
+
+
+CREATE TABLE DOCTOR_DETAILS(ID VARCHAR2(60),NAME VARCHAR2(200),CATEGORY VARCHAR2(50),DAY VARCHAR2(20),TIME VARCHAR2(60));
+
+INSERT INTO DOCTOR_DETAILS VALUES ('493','DR Rohim','sergon','Monday','1 PM');
+INSERT INTO DOCTOR_DETAILS VALUES ('434','DR Korim','physiology','Saturday','1 PM');
+INSERT INTO DOCTOR_DETAILS VALUES ('645','DR Sharmin','sergon','Thursday','6 PM');
+INSERT INTO DOCTOR_DETAILS VALUES ('654','DR Aklima','psychiatrist','Friday','9 AM');
+INSERT INTO DOCTOR_DETAILS VALUES ('745','DR Shakib','heart disease','Sunday','2 PM');
+
+
+CREATE TABLE doctor_RecordDetails(ID VARCHAR2(100),NAME VARCHAR2(50),PASS  VARCHAR2(30), ADDRESS VARCHAR2(60),CATEGORY VARCHAR2(30),TIME VARCHAR2(20));
+
+INSERT INTO doctor_RecordDetails VALUES ('493','DR Rohim','766','Borishal','sergon','Monday 1 PM');
+INSERT INTO doctor_RecordDetails VALUES ('434','DR Korim','998','Noakhali','physiology','Saturday 1 PM');
+INSERT INTO doctor_RecordDetails VALUES ('645','DR Sharmin','123','Kushtia','sergon','Thursday 6 PM');
+INSERT INTO doctor_RecordDetails VALUES ('654','DR Aklima','321','Feni','psychiatrist','Friday 9 AM');
+INSERT INTO doctor_RecordDetails VALUES ('745','DR Shakib','877','Dhaka','heart disease','Sunday 2 PM');
+
+
+CREATE TABLE Doctor_REGISTRATION(NAME VARCHAR2(200),AGE VARCHAR2(100),ADDRESS VARCHAR2(100),GENDER VARCHAR2(8),CONTACT VARCHAR2(11), CATEGORY VARCHAR2(50),BloodG VARCHAR2(4),EXPERIENCE VARCHAR2(60),MAIL VARCHAR2(20));
+
+INSERT INTO Doctor_REGISTRATION VALUES ('','','','','','','','','');
+
+ 
+CREATE TABLE Appointment(ID VARCHAR2(60),NAME VARCHAR2(200),ADDRESS VARCHAR2(100),AGE VARCHAR2(100),Phone VARCHAR2(11),GENDER VARCHAR2(8),BloodG VARCHAR2(4),MAIL VARCHAR2(50));
+
+INSERT INTO Appointment VALUES ('','','','','','','','');
+
+
+CREATE TABLE PAY_DETAILS(ACCOUNTID VARCHAR2(100) CONSTRAINT PK_ACCOUNTID PRIMARY KEY,NAME VARCHAR2(50),PAYMENT VARCHAR2(100),PAYMENTOPTION VARCHAR2(30));
+
+INSERT INTO PAY_DETAILS VALUES ('','','','');
+
+
+CREATE TABLE USER_DETAIL(ID VARCHAR2(100),NAME VARCHAR2(50),ACCOUNTID VARCHAR2(100),PASS  VARCHAR2(30));
+
+INSERT INTO USER_DETAIL VALUES ('123','shakil','123','123');
+INSERT INTO USER_DETAIL VALUES ('456','salam','456','456');
+INSERT INTO USER_DETAIL VALUES ('789','sattar','789','789');
+INSERT INTO USER_DETAIL VALUES ('321','masum','321','321');
+INSERT INTO USER_DETAIL VALUES ('678','rafi','678','678');
+ 
+
+CREATE TABLE ACCOUNTANT_DETAILS (ID VARCHAR2(60),NAME VARCHAR2(50),ACCOUNTID VARCHAR2(100));
+
+INSERT INTO ACCOUNTANT_DETAILS VALUES ('123','fahim','123');
+INSERT INTO ACCOUNTANT_DETAILS VALUES ('456','sharmin','456');
+INSERT INTO ACCOUNTANT_DETAILS VALUES ('789','aklima','789');
+INSERT INTO ACCOUNTANT_DETAILS VALUES ('321','masum','321');
+INSERT INTO ACCOUNTANT_DETAILS VALUES ('678','rofiq','678');
+
+
+CREATE TABLE Patient_Registration(NAME VARCHAR2(50),GENDER VARCHAR2(8),BLOODGROUP VARCHAR2(4),CONTACT VARCHAR2(11),MAIL VARCHAR2(50),AGE VARCHAR2(50),BIRTH VARCHAR2(10),ADDRESS VARCHAR2(60));
+
+INSERT INTO Patient_Registration VALUES ('','','','','','','','');
+
+
+CREATE TABLE Patient_Details(ID VARCHAR2(100),NAME VARCHAR2(50),GENDER VARCHAR2(8),BLOODGROUP VARCHAR2(4),CONTACT VARCHAR2(11),MAIL VARCHAR2(50),AGE VARCHAR2(100),BIRTH VARCHAR2(10),ADDRESS VARCHAR2(60));
+
+INSERT INTO Patient_Details VALUES ('23424','rofiq','Male','B+','46546556','rofiq@gmail.com','33','12-12-87','dhaka');
+INSERT INTO Patient_Details VALUES ('42423','shofiq','Male','A+','85746354','shofiq@gmail.com','26','12-11-95','dhaka');
+INSERT INTO Patient_Details VALUES ('86786','jobbar','Male','A-','93765665','jobbar@gmail.com','25','9-10-96','chandpur');
+
+
+CREATE TABLE CONTACT(NAME VARCHAR2(50),MAIL VARCHAR2(20),MOBILE VARCHAR2(11),MESSAGE VARCHAR2(60));
+
+INSERT INTO CONTACT VALUES ('','','','');
+
+
+CREATE TABLE HR_DETAILS(ID VARCHAR2(100),NAME VARCHAR2(50),EMAIL VARCHAR2(50),CONTACT VARCHAR2(11),DEPARTMENT VARCHAR2(10));
+
+INSERT INTO HR_DETAILS VALUES ('856','kamal','kamal@gmail.com','3342385','marketing');
+INSERT INTO HR_DETAILS VALUES ('567','Raihan','raiham@gmail.com','38567346','marketing');
+INSERT INTO HR_DETAILS VALUES ('576','Faruk','faruk@gmail.com','86746366','admin');
+INSERT INTO HR_DETAILS VALUES ('778','Kobir','kobir@gmail.com','95737475','admin');
+INSERT INTO HR_DETAILS VALUES ('885','Shagor','shagor@gmail.com','95847364','marketing');
+
+
+CREATE TABLE HR_REGISTRATION (ID VARCHAR2(100),NAME VARCHAR2(50),AGE VARCHAR2(100),GENDER VARCHAR2(10),BLOODGROUP VARCHAR2(5),EMAIL VARCHAR2(50),CONTACT VARCHAR2(11),DEPARTMENT VARCHAR2(10));
+
+INSERT INTO HR_REGISTRATION VALUES ('','','','','','','','');
+
+
+CREATE TABLE PHARMACY(ID VARCHAR2(50),NAME VARCHAR2(50),AGE VARCHAR2(100),MEDICINE VARCHAR2(100),EMAIL VARCHAR2(50),CONTACT VARCHAR2(11),DEPARTMENT VARCHAR2(10),DATES VARCHAR2(50));
+
+INSERT INTO PHARMACY VALUES ('4564','Rohim','33','Napa','rohim@gmail.com','44553455','fever','12-12-22');
+INSERT INTO PHARMACY VALUES ('3123','John','19','Paracitamol','john@gmail.com','86765635','cold','12-12-25');
+INSERT INTO PHARMACY VALUES ('7546','Damian','42','Seclo','damian@gmail.com','38347694','gastric','1-12-22');
+INSERT INTO PHARMACY VALUES ('2423','David','32','Newtac','david@gmail.com','38347674','ulcer','12-1-22');
+INSERT INTO PHARMACY VALUES ('4366','Darius','24','Napa Extend','darius@gmail.com','32425455','headache','2-2-22');
+
+
+CREATE TABLE AMBULANCE(HOTLINE VARCHAR2(30));
+
+INSERT INTO AMBULANCE VALUES ('10678');
+INSERT INTO AMBULANCE VALUES ('10606');
+INSERT INTO AMBULANCE VALUES ('10666');
+INSERT INTO AMBULANCE VALUES ('86576');
+INSERT INTO AMBULANCE VALUES ('17686');
+
+COMMIT;
+
+  
+
+
+ 
+
+
+
+ 
+ 
+
+ 
