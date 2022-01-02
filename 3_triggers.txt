@@ -1,0 +1,50 @@
+=============================================
+111111111111111111111111111111111111111111111111
+=============================================
+CREATE TRIGGER U_DETAIL_T 
+AFTER INSERT OR UPDATE ON U_DETAIL FOR EACH ROW
+DECLARE
+  TYPE_1 VARCHAR2(10); 
+BEGIN
+  TYPE_1:= CASE
+	WHEN INSERTING THEN 'INSERT'
+	WHEN UPDATING THEN 'UPDATE'
+ END;
+  INSERT INTO U_DETAIL_REC(UR_ID,O_TYPE,INSERT_TIME,U_ID,U_NAME,U_NUMBER,U_MAIL,U_ROLE,U_INFO,U_SHIFT) 
+  VALUES (UR_ID1.NEXTVAL,TYPE_1,sysdate,:NEW.U_ID,:NEW.U_NAME,:NEW.U_NUMBER,:NEW.U_MAIL,:NEW.U_ROLE,:NEW.U_INFO,:NEW.U_SHIFT); 
+END;
+============================================
+22222222222222222222222222222222222222222222222
+============================================
+CREATE TRIGGER PRESCRIPTION_T 
+AFTER INSERT OR UPDATE ON PRESCRIPTION FOR EACH ROW
+DECLARE
+  TYPE_1 VARCHAR2(10); 
+BEGIN
+  TYPE_1:= CASE
+	WHEN INSERTING THEN 'INSERT'
+	WHEN UPDATING THEN 'UPDATE'
+ END;
+  INSERT INTO PRESCRIPTION_REC(PR_ID,O_TYPE,INSERT_TIME,P_ID, U_ID, P_INFO) 
+  VALUES (PR_ID1.NEXTVAL,TYPE_1,sysdate,:NEW.P_ID, :NEW.U_ID, :NEW.P_INFO); 
+END;
+============================================
+33333333333333333333333333333333333333333333333
+============================================
+CREATE TRIGGER PRE_DEL
+AFTER DELETE OR UPDATE ON U_DETAIL FOR EACH ROW
+BEGIN
+	IF :OLD.U_ID =1 THEN
+	raise_application_error(-20015, 'You can not delete or update the admin row');
+	END IF;
+END;
+===========================================
+4444444444444444444444444444444444444444444444
+===========================================
+CREATE OR REPLACE TRIGGER U_ROLE_CONTROL
+AFTER INSERT OR UPDATE ON U_DETAIL FOR EACH ROW
+BEGIN
+	IF :NEW.U_ROLE NOT IN('admin','doctor','accountant','nurse','patient') THEN
+	raise_application_error(-20015, 'Please choose a valid role as admin or doctor or accountant or nurse or patient');
+	END IF;
+END;
