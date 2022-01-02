@@ -1,0 +1,77 @@
+.......................................................................
+111111111111111111111111111111111111
+.........................................................................
+create or replace procedure staff_up(user_name u_detail.u_name%type)
+is
+staff_shift u_detail.u_name%type;
+begin
+select u_shift into staff_shift from u_detail where u_name=user_name;
+dbms_output.put_line('The staff works in these days '||staff_shift);
+end staff_up;
+-------------------------------------------------------------
+set serveroutput on;
+exec staff_up('fahim');
+..................................................................
+222222222222222222222222222222222
+..................................................................
+create or replace PROCEDURE secure_dml
+IS
+BEGIN
+IF TO_CHAR (SYSDATE, 'HH24:MI') NOT BETWEEN '08:00' AND '18:00'
+        OR TO_CHAR (SYSDATE, 'DY') IN ('SAT', 'SUN') THEN
+	RAISE_PPLICATION_ERROR (-20205,
+		'You may only make changes during normal office hours');
+  END IF;
+END secure_dml;
+---------------------------------------------------
+exec secure_dml;
+................................................................
+33333333333333333333333333333333333
+................................................................
+create or replace PROCEDURE print_contact(in_u_id NUMBER)
+IS
+udet u_detail%ROWTYPE;
+BEGIN
+SELECT * INTO udet FROM u_detail WHERE u_id = in_u_id;  
+dbms_output.put_line(udet.u_name || ' ' || udet.u_number || '<' || udet.u_mail ||'>' );
+
+EXCEPTION
+WHEN OTHERS THEN dbms_output.put_line( SQLERRM );
+END;
+-------------------------------------------------------
+exec print_contact(2);
+....................................................................
+444444444444444444444444444444444444
+................................................................
+CREATE OR REPLACE PROCEDURE 
+getLastPatientName
+AS patient_name u_detail%rowtype;
+BEGIN
+SELECT * INTO patient_name from u_detail where 
+u_id=(select max(u_id) from u_detail where u_role='patient');
+dbms_output.put_line(patient_name.u_name);
+end;
+-------------------------------------------------------
+EXECUTE getLastPatientName;
+............................................................................
+5555555555555555555555555555555555555555
+.............................................................................
+CREATE OR REPLACE PROCEDURE TODAY_IS
+AS
+BEGIN
+DBMS_OUTPUT.PUT_LINE('Date of today is ' || TO_CHAR(SYSDATE, 'DL'));
+END TODAY_IS;
+-----------------------------------------------------------
+EXEC TODAY_IS;
+............................................................................
+6666666666666666666666666666666666666666
+............................................................................
+create or replace procedure nurse_sal_calc(work_hour IN number)
+is
+salary number(10);
+begin
+salary := work_hour * 150;
+dbms_output.put_line('Nurses Salary is '||salary||' tk');
+end nurse_sal_calc;
+--------------------------------------------------------
+exec nurse_sal_calc(8);
