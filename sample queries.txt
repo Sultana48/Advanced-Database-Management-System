@@ -1,0 +1,36 @@
+Sample Queries Used in our application Domain: 
+
+1.    SELECT * FROM U_DETAIL;
+* to show details about all the users
+2.    SELECT * FROM U_DETAIL WHERE U_NAME LIKE "kobir";
+*to show details of an user by his username
+3.    SELECT * FROM MEDICINE;
+*to show details of all HR.
+4.   SELECT CONTACT FROM AMBULANCE WHERE STATUS="active";
+*to show all the active ambulance numbers. 
+5.   SELECT * FROM U_DETAIL WHERE U_NAME ='Sharmin' and pass='123';
+*to log in with the username and password.
+7.   Select * from PRESCRIPTION_REC WHERE U_NAME='kobir';
+*to see a patients prescription record.
+8.   SELECT * FROM MEDICINE WHERE M_NAME= 'Napa';
+*Find a medicine from pharmacy with the medicine name.
+
+
+---------------------------------------------------------------
+---------------------------------------------------------------------
+
+
+
+   SELECT * FROM U_DETAIL WHERE U_NAME LIKE "kobir";
+
+*to show details of an user by his username
+3.    SELECT * FROM MEDICINE WHERE M_NAME= 'Napa';
+*Find a medicine from pharmacy with the medicine name. 
+
+
+4.   SELECT CONTACT FROM AMBULANCE WHERE STATUS="active";
+
+*to show all the active ambulance numbers. 
+
+7.   Select * from PRESCRIPTION_REC WHERE U_NAME='kobir';
+*to see a patients prescription record.
