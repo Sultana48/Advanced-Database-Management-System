@@ -1,0 +1,120 @@
+----------------------------------------------------------------------
+1111111111111111111111111111111111111111111
+----------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION totalPatients 
+RETURN number IS 
+   total number(2) := 0; 
+BEGIN 
+   SELECT count(*) into total 
+   FROM u_detail where u_role='patient'; 
+   RETURN total; 
+END; 
+-----------------------------------------------------------------------
+DECLARE 
+   c number(2); 
+BEGIN 
+   c := totalPatients(); 
+   dbms_output.put_line('Total number of Patients: ' || c); 
+END; 
+-----------------------------------------------------------------------
+select totalpatients from dual;
+------------------------------------------------------------------------
+22222222222222222222222222222222222222222222
+------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION welcome_msg ( p_name IN VARCHAR2) 
+RETURN VARCHAR2
+IS
+BEGIN
+RETURN ('Welcome '|| p_name);
+END;
+------------------------------------------------------------------------
+DECLARE
+lv_msg VARCHAR2(250);
+BEGIN
+lv_msg := welcome_msg ('Fahim');
+dbms_output.put_line(lv_msg);
+END;
+-------------------------------------------------------------------------
+select welcome_msg('Fahim') from dual;
+-------------------------------------------------------------------------
+333333333333333333333333333333333333333333333
+-------------------------------------------------------------------------
+create or replace FUNCTION calculati (x NUMBER,z VARCHAR2,y NUMBER)
+RETURN NUMBER IS 
+w NUMBER;
+BEGIN 
+IF z NOT IN ('+','-','*','/') 
+    THEN
+    raise_application_error(-2000,'PLEASE PUT THE RIGHT OPERATOR');
+END IF;
+    CASE z
+        WHEN '+' THEN        
+            w := x+y;
+        WHEN '-' THEN
+            w := x-y;
+        WHEN '*' THEN
+            w := x*y;
+        ELSE
+            w := x/y;
+        END CASE;
+        RETURN w;
+END calculati;
+------------------------------------------------------------------------
+select calculati(100,'/',10) from dual;
+------------------------------------------------------------------------
+44444444444444444444444444444444444444444444
+------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION GET_REC(USER_N IN VARCHAR2) 
+   RETURN DATE 
+   IS INSERT_DATE DATE;
+   BEGIN 
+      SELECT MIN(INSERT_TIME) INTO INSERT_DATE  
+      FROM U_DETAIL_REC 
+      WHERE U_NAME = USER_N; 
+      RETURN(INSERT_DATE); 
+    END;
+-----------------------------------------------------------------------
+select GET_REC('fahim') from dual;
+------------------------------------------------------------------------
+55555555555555555555555555555555555555555555
+-----------------------------------------------------------------------
+create or replace FUNCTION get_complete_details
+(in_person_id IN NUMBER)
+   RETURN VARCHAR2
+   IS person_details VARCHAR2(230);
+   BEGIN
+      SELECT 'User ID-'||u_detail.u_id||' NAME-'|| u_detail.u_name||' Role-'|| u_detail.u_role ||', Prescription-'||prescription.p_info||', Prescription ID-'||prescription.p_id
+      INTO person_details FROM prescription,u_detail WHERE prescription.u_id = u_detail.u_id and prescription.p_id = in_person_id;
+      RETURN(person_details);
+    END get_complete_details;
+---------------------------------------------------------------------
+select get_complete_details(9) from dual;
+----------------------------------------------------------------------
+6666666666666666666666666666666666666666666
+-----------------------------------------------------------------------
+  CREATE OR REPLACE FUNCTION  CALCULATE_TAX (x NUMBER)
+   RETURN NUMBER
+   IS t NUMBER;
+BEGIN
+    IF x<300000 THEN
+        raise_application_error(-20999,'As your income is less than 3 lakhs you do not have to pay tax');
+    END IF;
+    IF x<400000
+    THEN t := (5*x)/100;
+    END IF;
+    IF x<700000
+    THEN t := (10*x)/100;
+    END IF;
+    IF x<1100000
+    THEN t := (15*x)/100;
+    END IF;
+    IF x<1600000
+    THEN t := (20*x)/100;
+    END If;
+    IF x>1600000
+    THEN t := (25*x)/100;
+    END IF;
+      RETURN (t);
+END calculate_tax;
+-------------------------------------------------------------------------
+select calculate_tax(300000) from dual;
